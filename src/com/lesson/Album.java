@@ -7,7 +7,7 @@ public class Album {
     private String name;
     private String artist;
 
-    private static ArrayList<Song> songs;
+    private ArrayList<Song> songs;
 
     public Album(String name, String artist) {
         this.name = name;
@@ -40,7 +40,7 @@ public class Album {
             playlist.add(this.songs.get(index));
             return true;
         }
-        System.out.println("album does not have a track" + trackNo);
+        System.out.println("album does not have a track " + trackNo);
         return false;
     }
 
@@ -50,7 +50,7 @@ public class Album {
             playList.add(checkedSong);
             return true;
         }
-        System.out.println("song " + title + " is not in this album");
+        System.out.println("song " + "'" + title + "'" + " is not on this album");
         return false;
     }
 }
