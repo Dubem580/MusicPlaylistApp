@@ -1,9 +1,6 @@
 package com.lesson;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -63,6 +60,7 @@ public class Main {
             return;
         } else {
             System.out.println("now playing " + listIterator.next().toString());
+            printMenu();
         }
         while(!quit){
             int action = sc.nextInt();
@@ -102,16 +100,49 @@ public class Main {
                     }
                     break;
                 case 3:
+                    if (forward){
+                        if (listIterator.hasPrevious()){
+                            System.out.println("now replaying " + listIterator.previous().toString());
+                            forward = false;
+                        } else {
+                            System.out.println("start of the playlist");
+                            }
+                    } else{
+                        if (listIterator.hasNext()){
+                            System.out.println("now replaying " + listIterator.next().toString());
+                            forward = true;
+                        } else {
+                            System.out.println("end of list");
+                        }
+                    }
                     break;
                 case 4:
-                    //printList(playlist);
+                    printList(playlist);
                     break;
                 case 5:
-                   // printMenu();
+                   printMenu();
                     break;
             }
         }
     }
 
+    private static void printMenu(){
+        System.out.println("Available actions:\npress");
+        System.out.println("0 - Quit\n" +
+                "1 - Next song\n" +
+                "2 - Previous song\n" +
+                "3 - Replay the current song\n" +
+                "4 - List songs in the playlist\n" +
+                "5 - Print available actions");
+    }
+
+    private static void printList(LinkedList<Song> playlist){
+        Iterator<Song> iterator = playlist.iterator();
+        System.out.println("*****************");
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        System.out.println("*****************");
+    }
 
 }
